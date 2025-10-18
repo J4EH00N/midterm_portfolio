@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className="bg-gray-100">
+      <body>
         <Header />
         <main className="container mx-auto p-4">{children}</main>
         <Footer />

@@ -34,7 +34,8 @@ const MbtiBar = ({
   </div>
 )
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  await new Promise((resolve) => setTimeout(resolve, 200))
   return (
     <div className="max-w-7xl mx-auto py-12 px-4">
       <div className="flex flex-col md:flex-row items-center gap-10 mb-12 bg-white p-8 rounded-2xl shadow-lg">

@@ -10,14 +10,14 @@ import {
   SiTistory,
 } from 'react-icons/si'
 
-export default function Home() {
+export default async function Home() {
   const skills = [
     { name: 'Next.js', icon: <SiNextdotjs size={30} /> },
     { name: 'TypeScript', icon: <SiTypescript size={30} /> },
     { name: 'Tailwind CSS', icon: <SiTailwindcss size={30} /> },
     { name: 'Node.js', icon: <FaNodeJs size={30} /> },
   ]
-
+  await new Promise((resolve) => setTimeout(resolve, 200))
   return (
     <div className="mt-16 mb-16">
       {/* 상단: 프로필과 소개 */}

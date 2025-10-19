@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
 
-// 각 팀원의 정보 타입을 정의합니다.
 type TeamMember = {
   name: string
   major: string
@@ -11,7 +10,6 @@ type TeamMember = {
   imageUrl: string
 }
 
-// --- ⚙️ 여기에 팀원 정보를 수정하세요! ---
 const teamMembers: TeamMember[] = [
   {
     name: '곽민경',
@@ -38,19 +36,18 @@ const teamMembers: TeamMember[] = [
     name: '정윤서',
     major: '중부대학교 정보보호학전공',
     tags: ['SCP', 'WEB3', '+5'],
-    githubUrl: 'https://github.com/jaesung',
+    githubUrl: 'https://github.com/oesp91',
     imageUrl: '/team/member3.png',
   },
   {
     name: '정재성',
     major: '중부대학교 정보보호학전공',
     tags: ['SCP', 'WEB', '+5'],
-    githubUrl: 'https://github.com/member5',
+    githubUrl: 'https://github.com/Interludeal',
     imageUrl: '/team/member4.png',
   },
 ]
 
-// 팀원 카드 컴포넌트
 const TeamMemberCard = ({ member }: { member: TeamMember }) => (
   <Link
     href={member.githubUrl}
@@ -82,11 +79,16 @@ const TeamMemberCard = ({ member }: { member: TeamMember }) => (
   </Link>
 )
 
-export default function TeamPage() {
+export default async function TeamPage() {
+  await new Promise((resolve) => setTimeout(resolve, 200))
   return (
     <div className="py-12">
       <div className="text-center mb-12">
         <h1 className="text-5xl font-extrabold text-gray-900">Our Team</h1>
+        <p className="text-gray-500 mt-2">
+          <br />
+          웹서버보안프로그래밍 수업을 함께하는 팀원들입니다.
+        </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
         {teamMembers.map((member) => (

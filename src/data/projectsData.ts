@@ -33,7 +33,7 @@ export const projectsData: Project[] = [
     description:
       '동아리 내부 해커톤에 참여하여 문서 파일의 암호를 크래킹하는 프로그램을 개발했습니다.',
     imageUrl: '/projectsimg/fpc.png',
-    tags: ['Hackathon', 'Python', 'Malware Analysis'],
+    tags: ['Hackathon', 'Malware Analysis', 'Python'],
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ export const projectsData: Project[] = [
     description:
       'Python을 활용하여 소켓 통신을 이용한 백도어 프로그램을 제작한 토이 프로젝트입니다.',
     imageUrl: '/projectsimg/scp.png',
-    tags: ['Python', 'Malware Analysis'],
+    tags: ['Malware Analysis', 'Python'],
     link: 'https://github.com/J4EH00N/Python_Toy_Project_2022',
   },
   {
@@ -74,9 +74,7 @@ export const projectsData: Project[] = [
 export const projectTags = [
   'All',
   'Web Development',
-  'Python',
   'CTF',
   'Hackathon',
-  'PWN',
   'Malware Analysis',
 ]

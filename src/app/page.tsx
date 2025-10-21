@@ -1,14 +1,53 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { FiArrowRight } from 'react-icons/fi'
-// 아이콘 추가: FaInstagram, SiTistory
-import { FaGithub, FaNodeJs, FaInstagram } from 'react-icons/fa'
+import {
+  FaGithub,
+  FaNodeJs,
+  FaInstagram,
+  FaStar,
+  FaCodeBranch,
+  FaEye,
+} from 'react-icons/fa'
 import {
   SiNextdotjs,
   SiTypescript,
   SiTailwindcss,
   SiTistory,
 } from 'react-icons/si'
+
+type Repository = {
+  id: number
+  name: string
+  description: string | null
+  html_url: string
+  stargazers_count: number
+  forks_count: number
+  watchers_count: number
+}
+
+async function getGithubRepos() {
+  const username = 'J4EH00N'
+  const token = process.env.GITHUB_TOKEN
+
+  const response = await fetch(
+    `https://api.github.com/users/${username}/repos?sort=pushed&per_page=4`,
+    {
+      next: { revalidate: 3600 },
+      headers: {
+        ...(token && { Authorization: `token ${token}` }),
+      },
+    }
+  )
+
+  if (!response.ok) {
+    console.error('Failed to fetch GitHub repos:', response.statusText)
+    return []
+  }
+
+  const repos: Repository[] = await response.json()
+  return repos
+}
 
 export default async function Home() {
   const skills = [
@@ -18,6 +57,7 @@ export default async function Home() {
     { name: 'Node.js', icon: <FaNodeJs size={30} /> },
   ]
   await new Promise((resolve) => setTimeout(resolve, 200))
+  const repos = await getGithubRepos()
   return (
     <div className="mt-16 mb-16">
       {/* 상단: 프로필과 소개 */}
@@ -62,7 +102,54 @@ export default async function Home() {
         </div>
       </div>
 
-      {/* "Call to Action" 섹션 */}
+      {repos && repos.length > 0 && (
+        <div className="mt-24">
+          <h2 className="text-center text-4xl font-bold mb-8 text-gray-900">
+            GitHub Repositories
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {repos.map((repo) => (
+              <Link
+                key={repo.id}
+                href={repo.html_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white p-6 rounded-xl shadow-md border hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+              >
+                <h3 className="text-lg font-bold text-gray-900 truncate mb-1">
+                  {repo.name}
+                </h3>
+                <p className="text-gray-600 text-sm h-10 overflow-hidden text-ellipsis mb-4">
+                  {repo.description || 'No description provided.'}{' '}
+                </p>
+                <div className="flex justify-end items-center space-x-4 text-sm text-gray-500">
+                  <span className="flex items-center gap-1">
+                    <FaStar /> {repo.stargazers_count}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <FaCodeBranch /> {repo.forks_count}
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <FaEye /> {repo.watchers_count}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center mt-8">
+            <a
+              href={`https://github.com/${'J4EH00N'}?tab=repositories`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-6 py-3 border border-gray-300 rounded-full font-semibold hover:bg-gray-100 transition-colors"
+            >
+              View All Repositories <FiArrowRight className="ml-2" />
+            </a>
+          </div>
+        </div>
+      )}
+
       <div className="mt-24 text-center bg-white p-10 rounded-2xl shadow-lg">
         <h2 className="text-3xl font-bold text-gray-900">더 자세히 알아보기</h2>
         <p className="text-gray-600 mt-2 mb-6">

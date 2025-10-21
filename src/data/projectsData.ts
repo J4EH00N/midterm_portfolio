@@ -69,6 +69,15 @@ export const projectsData: Project[] = [
     imageUrl: '/projectsimg/jbuctf2025.png',
     tags: ['CTF', '문제 출제', 'PWN'],
   },
+  {
+    id: 8,
+    title: 'CVE-2016-5195 분석 및 실습',
+    description:
+      'CVE-2016-5195 취약점을 분석하고 이를 이용한 실습을 진행했습니다.',
+    imageUrl: '/projectsimg/dirty-cow.png',
+    tags: ['CVE Analysis', 'PWN', 'Kernel Exploitation'],
+    link: 'https://sjh4ck3r.tistory.com/51',
+  },
 ]
 
 export const projectTags = [

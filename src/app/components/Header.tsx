@@ -11,7 +11,7 @@ export default function Header() {
           JAEHUN
         </Link>
 
-        <div className="hidden md:flex items-center space-x-8 text-gray-600 font-medium">
+        <div className="text-1.5xl hidden md:flex items-center space-x-8 text-gray-600 font-bold">
           <Link href="/about" className="hover:text-blue-600">
             About
           </Link>

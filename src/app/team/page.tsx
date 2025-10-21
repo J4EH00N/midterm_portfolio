@@ -37,7 +37,7 @@ const teamMembers: TeamMember[] = [
     tags: ['SCP', 'PWNABLE'],
     githubUrl: 'https://github.com/J4EH00N',
     imageUrl: '/profile.png',
-    portfolioUrl: '/',
+    portfolioUrl: 'https://midterm-portfolio-two.vercel.app/',
   },
   {
     name: '정윤서',
